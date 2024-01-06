@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package device;
+
+service DeviceService {
+  rpc StreamDeviceControl (stream DeviceControlRequest) returns (stream DeviceControlResponse);
+}
+
+message DeviceControlRequest {
+  string room = 1;
+  string device_type = 2;
+  string action = 3;
+}
+
+message DeviceControlResponse {
+  bool success = 1;
+}
