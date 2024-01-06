@@ -1,0 +1,85 @@
+<!-- In your HTML file -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home Control</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Smart Home Control</h1>
+
+    <section id="thermostat-section">
+        <h2>Thermostat Control</h2>
+        <select id="room">
+            <option value="" disabled selected>Select a room</option>
+            <option value="1">Living Room</option>
+            <option value="2">Master Bedroom</option>
+            <option value="3">Kids Bedroom</option>
+            <option value="4">Kitchen</option>
+            <option value="5">Garage</option>
+        </select>
+        <br>
+        <input type="number" id="temperature" step="0.1" placeholder="Enter temperature">
+        <button onclick="setTemperature()">Set Temperature</button>
+        <br>
+        <button onclick="getTemperature()">Get Temperature</button>
+        <br>
+        <button onclick="streamTemperatures()">Stream Temperatures</button>
+    </section>
+
+    <section id="security-section">
+        <h2>Security Control</h2>
+        <select id="security-room">
+            <option value="" disabled selected>Select a room</option>
+            <option value="1">Living Room</option>
+            <option value="2">Master Bedroom</option>
+            <option value="3">Kids Bedroom</option>
+            <option value="4">Kitchen</option>
+            <option value="5">Garage</option>
+        </select>
+        <br>
+        <button onclick="lockRoom()">Lock Room</button>
+        <br>
+        <button onclick="streamSecurityActions()">Stream Security Actions</button>
+    </section>
+
+    <section id="device-section">
+        <h2>Device Control</h2>
+        <select id="device-room">
+            <option value="" disabled selected>Select a room</option>
+            <option value="1">Living Room</option>
+            <option value="2">Master Bedroom</option>
+            <option value="3">Kids Bedroom</option>
+            <option value="4">Kitchen</option>
+            <option value="5">Garage</option>
+        </select>
+        <br>
+        <select id="device-type">
+            <option value="" disabled selected>Select Device Type</option>
+            <option value="TV">TV</option>
+            <option value="Smart Speaker">Smart Speaker</option>
+            <option value="Smart Light">Smart Light</option>
+        </select>
+        <br>
+        <input type="text" id="device-action" placeholder="Enter action">
+        <button onclick="streamDeviceControl()">Stream Device Control</button>
+    </section>
+
+    <div id="temperature-results"></div>
+
+    <!-- Include the external client.js file -->
+    <script src="../app.js"></script>
+
+    <script>
+        // Add an event listener to call startClient when the document is loaded
+        document.addEventListener("DOMContentLoaded", function () {
+            startClient();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package security;
+
+service SecurityService {
+  rpc LockOnOff(LockOnOffRequest) returns (LockOnOffResponse);
+  rpc CheckLockStatus(LockStatusRequest) returns (LockStatusResponse);
+  rpc StreamSecurityActions(stream SecurityActionRequest) returns (StreamSecurityActionsResponse);
+}
+
+message LockOnOffRequest {
+  bool on = 1;
+}
+
+message LockOnOffResponse {
+  bool success = 1;
+}
+
+message LockStatusRequest {
+  string room = 1;
+}
+
+message LockStatusResponse {
+  bool locked = 1;
+}
+
+// New message for client-side streaming actions
+message SecurityActionRequest {
+  repeated SecurityAction actions = 1;
+}
+
+// New message for client-side streaming response
+message StreamSecurityActionsResponse {
+  bool success = 1;
+}
+
+// Enum to represent different security actions
+enum SecurityAction {
+  LOCK_ON = 0;
+  LOCK_OFF = 1;
+}

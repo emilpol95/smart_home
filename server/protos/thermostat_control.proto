@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package thermostat;
+
+service ThermostatService {
+  rpc SetTemperature (ThermostatRequest) returns (ThermostatResponse);
+  rpc GetTemperature (ThermostatRequest) returns (ThermostatResponse);
+  rpc StreamTemperatures (StreamTemperaturesRequest) returns (stream TemperatureUpdate);
+}
+
+message ThermostatRequest {
+  string room = 1;
+  float temperature = 2;
+}
+
+message ThermostatResponse {
+  bool success = 1;
+  float current_temperature = 2;
+}
+
+message TemperatureUpdate {
+  string room = 1;
+  float current_temperature = 2;
+}
+
+message StreamTemperaturesRequest {
+  repeated string rooms = 1;
+  int32 max_messages = 2;
+}
